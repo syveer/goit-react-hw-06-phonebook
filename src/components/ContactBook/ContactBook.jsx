@@ -16,13 +16,10 @@ const ContactBook = () => {
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
+  const filteredContacts = contacts.filter(contact => contact.name);
   const handleAddContact = () => {
     const newContact = {
-      id: Date.now(), // Generate unique ID for new contact
+      id: Date.now(),
       name,
       phoneNumber,
     };
