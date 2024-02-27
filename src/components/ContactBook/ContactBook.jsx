@@ -7,7 +7,7 @@ import {
   deleteContact,
   setFilter,
 } from '../Store/ContactSlice/ContactSlice';
-import styles from './ContactBook.module.css'; // Importă fișierul CSS module
+import styles from './ContactBook.module.css';
 
 const ContactBook = () => {
   const [name, setName] = useState('');
@@ -16,14 +16,14 @@ const ContactBook = () => {
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
-  const filteredContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
+  const filteredContacts = contacts.filter(
+    contact =>
+      contact.name && contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   const handleAddContact = () => {
     const newContact = {
-      id: Date.now(), // Generate unique ID for new contact
-      name,
+      id: Date.now(),
       phoneNumber,
     };
     dispatch(addContact(newContact));
