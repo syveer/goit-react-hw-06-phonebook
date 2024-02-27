@@ -1,16 +1,17 @@
-export const App = () => {
+import React from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import store, { persistor } from './Store/Store';
+import ContactBook from './ContactBook/ContactBook';
+
+function App() {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ContactBook />
+      </PersistGate>
+    </Provider>
   );
-};
+}
+
+export default App;
