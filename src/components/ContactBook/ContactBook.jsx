@@ -16,14 +16,14 @@ const ContactBook = () => {
   const filter = useSelector(state => state.filter);
   const dispatch = useDispatch();
 
-  const filteredContacts = contacts.filter(
-    contact =>
-      contact.name && contact.name.toLowerCase().includes(filter.toLowerCase())
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   const handleAddContact = () => {
     const newContact = {
-      id: Date.now(),
+      id: Date.now(), // Generate unique ID for new contact
+      name,
       phoneNumber,
     };
     dispatch(addContact(newContact));
@@ -38,7 +38,6 @@ const ContactBook = () => {
   const handleFilterChange = event => {
     dispatch(setFilter(event.target.value));
   };
-
   return (
     <div className={styles.phonebookContainer}>
       <h1 className={styles.title}>Phonebook</h1>
